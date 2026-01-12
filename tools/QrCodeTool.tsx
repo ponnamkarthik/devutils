@@ -9,7 +9,7 @@ import QRCode from "react-qr-code";
 import { toPng, toSvg } from "html-to-image";
 
 export const QrCodeTool: React.FC = () => {
-  const [value, setValue] = useState("https://devutils.app");
+  const [value, setValue] = useState("https://devutils.karthikponnam.dev");
   const [size, setSize] = useState(256);
   const [fgColor, setFgColor] = useState("#000000");
   const [bgColor, setBgColor] = useState("#ffffff");

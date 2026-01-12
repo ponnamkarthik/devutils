@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Button, Card, Input } from "../components/UI";
 import { MonacoEditor } from "../components/MonacoEditor";
 import {

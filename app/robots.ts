@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://devutils.app/sitemap.xml",
+    sitemap: "https://devutils.karthikponnam.dev/sitemap.xml",
   };
 }

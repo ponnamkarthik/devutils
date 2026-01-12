@@ -37,6 +37,8 @@ import {
   FileText,
   Send,
   KeyRound,
+  Ruler,
+  Activity,
 } from "lucide-react";
 import { Button } from "./UI";
 import Image from "next/image";
@@ -47,10 +49,12 @@ const TOOL_GROUPS = [
     items: [
       { name: "JSON Tools", path: "/json/format", icon: FileJson },
       { name: "YAML Converter", path: "/yaml/json", icon: FileText },
+      { name: "TOML Converter", path: "/toml/json", icon: FileCode },
       { name: "CSV Converter", path: "/csv/json", icon: Sheet },
       { name: "SQL Formatter", path: "/sql", icon: Database },
       { name: "Code Formatter", path: "/code/formatter", icon: Code },
       { name: "Code Minifier", path: "/code/minifier", icon: FileCode },
+      { name: "CSS Unit Converter", path: "/css-units", icon: Ruler },
     ],
   },
   {
@@ -79,6 +83,7 @@ const TOOL_GROUPS = [
       { name: "String Inspector", path: "/string-inspector", icon: Type },
       { name: "Color Tools", path: "/color", icon: Palette },
       { name: "SVG Editor", path: "/svg", icon: ImageIcon },
+      { name: "Speed Test", path: "/speed-test", icon: Activity },
       { name: "World Clock", path: "/world-clock", icon: Globe },
       { name: "Unix Timestamp", path: "/unix-time", icon: Clock },
       { name: "JWT Debugger", path: "/jwt", icon: ShieldCheck },

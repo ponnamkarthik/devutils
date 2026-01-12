@@ -96,8 +96,8 @@ export const PrivacyPolicy: React.FC = () => {
           <p>
             Some tools may link to external resources (e.g., GitHub,
             Documentation, or specific sub-tools hosted separately). Once you
-            leave the <code>devutils.app</code> domain (or your local instance),
-            this privacy policy no longer applies.
+            leave the <code>devutils.karthikponnam.dev</code> domain (or your
+            local instance), this privacy policy no longer applies.
           </p>
         </section>
 

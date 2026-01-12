@@ -29,6 +29,8 @@ import {
   FileText,
   Send,
   KeyRound,
+  Ruler,
+  Activity,
 } from "lucide-react";
 
 const TOOLS = [
@@ -42,139 +44,13 @@ const TOOLS = [
     bgColor: "bg-yellow-500/10",
   },
   {
-    title: "HTTP Request Builder",
+    title: "Base64 Converter",
     description:
-      "Construct API requests with params, auth, and body. Export to cURL, Fetch, and Axios.",
-    icon: Send,
-    path: "/http-builder",
-    color: "text-orange-600",
-    bgColor: "bg-orange-600/10",
-  },
-  {
-    title: "Password Generator",
-    description:
-      "Create strong passwords or diceware passphrases with entropy analysis.",
-    icon: KeyRound,
-    path: "/password",
+      "Encode and decode text or files to Base64 format securely in your browser.",
+    icon: Binary,
+    path: "/base64/encode",
     color: "text-emerald-500",
     bgColor: "bg-emerald-500/10",
-  },
-  {
-    title: "YAML Converter",
-    description:
-      "Convert between YAML and JSON with validation and live preview.",
-    icon: FileText,
-    path: "/yaml/json",
-    color: "text-red-500",
-    bgColor: "bg-red-500/10",
-  },
-  {
-    title: "Unix Timestamp",
-    description:
-      "Convert between Unix timestamps and human-readable dates. Real-time clock included.",
-    icon: Clock,
-    path: "/unix-time",
-    color: "text-cyan-600",
-    bgColor: "bg-cyan-600/10",
-  },
-  {
-    title: "JWT Debugger",
-    description:
-      "Decode JSON Web Tokens to inspect headers, payloads, and signatures.",
-    icon: ShieldCheck,
-    path: "/jwt",
-    color: "text-rose-500",
-    bgColor: "bg-rose-500/10",
-  },
-  {
-    title: "Markdown Editor",
-    description:
-      "Write Markdown with real-time preview. Export to HTML or print-ready PDF.",
-    icon: FileText,
-    path: "/markdown",
-    color: "text-slate-600",
-    bgColor: "bg-slate-600/10",
-  },
-  {
-    title: "String Inspector",
-    description:
-      "Analyze character counts, bytes (UTF-8), word distribution, and Unicode points.",
-    icon: Type,
-    path: "/string-inspector",
-    color: "text-blue-500",
-    bgColor: "bg-blue-500/10",
-  },
-  {
-    title: "World Clock",
-    description:
-      "Plan meetings across timezones with a visual 24-hour grid comparison.",
-    icon: Globe,
-    path: "/world-clock",
-    color: "text-indigo-500",
-    bgColor: "bg-indigo-500/10",
-  },
-  {
-    title: "JSON Graph",
-    description:
-      "Visualize JSON objects as interactive node graphs. Perfect for understanding structure.",
-    icon: Network,
-    path: "/json/graph",
-    color: "text-emerald-500",
-    bgColor: "bg-emerald-500/10",
-  },
-  {
-    title: "JSON to Types",
-    description:
-      "Convert JSON to TypeScript, Go, Java, Kotlin, Rust, Dart, Python, and C# models.",
-    icon: FileType,
-    path: "/json/converter",
-    color: "text-pink-500",
-    bgColor: "bg-pink-500/10",
-  },
-  {
-    title: "Color Picker",
-    description:
-      "Advanced OKLCH color picker with P3 support, palettes, and contrast checking.",
-    icon: Palette,
-    path: "/color",
-    color: "text-pink-600",
-    bgColor: "bg-pink-600/10",
-  },
-  {
-    title: "SVG Editor",
-    description: "View, optimize, edit, and transform SVG code.",
-    icon: ImageIcon,
-    path: "/svg",
-    color: "text-orange-500",
-    bgColor: "bg-orange-500/10",
-  },
-  {
-    title: "Image Compressor",
-    description:
-      "Compress and convert images (PNG, JPEG, WebP) locally. High performance.",
-    icon: ImageIcon,
-    path: "https://optiimg.karthikponnam.dev/",
-    color: "text-orange-600",
-    bgColor: "bg-orange-600/10",
-    isExternal: true,
-  },
-  {
-    title: "Fake Data Generator",
-    description:
-      "Generate Lorem Ipsum text or structured mock data (JSON/CSV) for testing.",
-    icon: Type,
-    path: "/fake-data",
-    color: "text-pink-500",
-    bgColor: "bg-pink-500/10",
-  },
-  {
-    title: "Diff Viewer",
-    description:
-      "Compare text, JSON, or code side-by-side to identify differences quickly.",
-    icon: FileDiff,
-    path: "/diff",
-    color: "text-indigo-500",
-    bgColor: "bg-indigo-500/10",
   },
   {
     title: "URL Tools",
@@ -186,13 +62,22 @@ const TOOLS = [
     bgColor: "bg-blue-500/10",
   },
   {
-    title: "QR Code Generator",
+    title: "JWT Debugger",
     description:
-      "Create customizable QR codes for URLs, text, and Wi-Fi credentials instantly.",
-    icon: QrCode,
-    path: "/qr-code",
-    color: "text-slate-500",
-    bgColor: "bg-slate-500/10",
+      "Decode JSON Web Tokens to inspect headers, payloads, and signatures.",
+    icon: ShieldCheck,
+    path: "/jwt",
+    color: "text-rose-500",
+    bgColor: "bg-rose-500/10",
+  },
+  {
+    title: "UUID Generator",
+    description:
+      "Generate RFC4122 version 4 UUIDs using cryptographically strong random values.",
+    icon: Fingerprint,
+    path: "/uuid",
+    color: "text-pink-500",
+    bgColor: "bg-pink-500/10",
   },
   {
     title: "Hash Generator",
@@ -213,24 +98,6 @@ const TOOLS = [
     bgColor: "bg-violet-500/10",
   },
   {
-    title: "CSV Converter",
-    description:
-      "Convert CSV to JSON and vice versa. Supports large files and file downloads.",
-    icon: Sheet,
-    path: "/csv/json",
-    color: "text-green-500",
-    bgColor: "bg-green-500/10",
-  },
-  {
-    title: "Cron Generator",
-    description:
-      "Create and decipher cron schedule expressions with plain English explanations.",
-    icon: Clock,
-    path: "/cron",
-    color: "text-orange-500",
-    bgColor: "bg-orange-500/10",
-  },
-  {
     title: "Code Formatter",
     description:
       "Prettify JS, TS, HTML, CSS, Markdown, and YAML using Prettier.",
@@ -238,6 +105,14 @@ const TOOLS = [
     path: "/code/formatter",
     color: "text-purple-500",
     bgColor: "bg-purple-500/10",
+  },
+  {
+    title: "Code Minifier",
+    description: "Minify JavaScript, CSS, and HTML files offline.",
+    icon: Code,
+    path: "/code/minifier",
+    color: "text-red-500",
+    bgColor: "bg-red-500/10",
   },
   {
     title: "SQL Formatter",
@@ -249,30 +124,181 @@ const TOOLS = [
     bgColor: "bg-blue-500/10",
   },
   {
-    title: "Code Minifier",
-    description: "Minify JavaScript, CSS, and HTML files offline.",
-    icon: Code,
-    path: "/code/minifier",
+    title: "YAML Converter",
+    description:
+      "Convert between YAML and JSON with validation and live preview.",
+    icon: FileText,
+    path: "/yaml/json",
     color: "text-red-500",
     bgColor: "bg-red-500/10",
   },
   {
-    title: "UUID Generator",
+    title: "TOML Converter",
+    description: "Convert TOML to JSON and JSON to TOML.",
+    icon: FileCode,
+    path: "/toml/json",
+    color: "text-amber-500",
+    bgColor: "bg-amber-500/10",
+  },
+  {
+    title: "CSV Converter",
     description:
-      "Generate RFC4122 version 4 UUIDs using cryptographically strong random values.",
-    icon: Fingerprint,
-    path: "/uuid",
+      "Convert CSV to JSON and vice versa. Supports large files and file downloads.",
+    icon: Sheet,
+    path: "/csv/json",
+    color: "text-green-500",
+    bgColor: "bg-green-500/10",
+  },
+  {
+    title: "JSON Graph",
+    description:
+      "Visualize JSON objects as interactive node graphs. Perfect for understanding structure.",
+    icon: Network,
+    path: "/json/graph",
+    color: "text-emerald-500",
+    bgColor: "bg-emerald-500/10",
+  },
+  {
+    title: "JSON to Types",
+    description:
+      "Convert JSON to TypeScript, Go, Java, Kotlin, Rust, Dart, Python, and C# models.",
+    icon: FileType,
+    path: "/json/converter",
     color: "text-pink-500",
     bgColor: "bg-pink-500/10",
   },
   {
-    title: "Base64 Converter",
+    title: "Diff Viewer",
     description:
-      "Encode and decode text or files to Base64 format securely in your browser.",
-    icon: Binary,
-    path: "/base64/encode",
+      "Compare text, JSON, or code side-by-side to identify differences quickly.",
+    icon: FileDiff,
+    path: "/diff",
+    color: "text-indigo-500",
+    bgColor: "bg-indigo-500/10",
+  },
+  {
+    title: "String Inspector",
+    description:
+      "Analyze character counts, bytes (UTF-8), word distribution, and Unicode points.",
+    icon: Type,
+    path: "/string-inspector",
+    color: "text-blue-500",
+    bgColor: "bg-blue-500/10",
+  },
+  {
+    title: "CSS Unit Converter",
+    description: "Convert between px, rem, em, %, vw, and more.",
+    icon: Ruler,
+    path: "/css-units",
+    color: "text-indigo-500",
+    bgColor: "bg-indigo-500/10",
+  },
+  {
+    title: "Color Picker",
+    description:
+      "Advanced OKLCH color picker with P3 support, palettes, and contrast checking.",
+    icon: Palette,
+    path: "/color",
+    color: "text-pink-600",
+    bgColor: "bg-pink-600/10",
+  },
+  {
+    title: "SVG Editor",
+    description: "View, optimize, edit, and transform SVG code.",
+    icon: ImageIcon,
+    path: "/svg",
+    color: "text-orange-500",
+    bgColor: "bg-orange-500/10",
+  },
+  {
+    title: "QR Code Generator",
+    description:
+      "Create customizable QR codes for URLs, text, and Wi-Fi credentials instantly.",
+    icon: QrCode,
+    path: "/qr-code",
+    color: "text-slate-500",
+    bgColor: "bg-slate-500/10",
+  },
+  {
+    title: "Markdown Editor",
+    description:
+      "Write Markdown with real-time preview. Export to HTML or print-ready PDF.",
+    icon: FileText,
+    path: "/markdown",
+    color: "text-slate-600",
+    bgColor: "bg-slate-600/10",
+  },
+  {
+    title: "HTTP Request Builder",
+    description:
+      "Construct API requests with params, auth, and body. Export to cURL, Fetch, and Axios.",
+    icon: Send,
+    path: "/http-builder",
+    color: "text-orange-600",
+    bgColor: "bg-orange-600/10",
+  },
+  {
+    title: "Password Generator",
+    description:
+      "Create strong passwords or diceware passphrases with entropy analysis.",
+    icon: KeyRound,
+    path: "/password",
     color: "text-emerald-500",
     bgColor: "bg-emerald-500/10",
+  },
+  {
+    title: "Fake Data Generator",
+    description:
+      "Generate Lorem Ipsum text or structured mock data (JSON/CSV) for testing.",
+    icon: Type,
+    path: "/fake-data",
+    color: "text-pink-500",
+    bgColor: "bg-pink-500/10",
+  },
+  {
+    title: "Cron Generator",
+    description:
+      "Create and decipher cron schedule expressions with plain English explanations.",
+    icon: Clock,
+    path: "/cron",
+    color: "text-orange-500",
+    bgColor: "bg-orange-500/10",
+  },
+  {
+    title: "Unix Timestamp",
+    description:
+      "Convert between Unix timestamps and human-readable dates. Real-time clock included.",
+    icon: Clock,
+    path: "/unix-time",
+    color: "text-cyan-600",
+    bgColor: "bg-cyan-600/10",
+  },
+  {
+    title: "World Clock",
+    description:
+      "Plan meetings across timezones with a visual 24-hour grid comparison.",
+    icon: Globe,
+    path: "/world-clock",
+    color: "text-indigo-500",
+    bgColor: "bg-indigo-500/10",
+  },
+  {
+    title: "Internet Speed Test",
+    description: "Estimate download speed and latency in-browser.",
+    icon: Activity,
+    path: "/speed-test",
+    color: "text-sky-500",
+    bgColor: "bg-sky-500/10",
+  },
+  {
+    title: "Image Compressor",
+    description:
+      "Compress and convert images (PNG, JPEG, WebP) locally. High performance.",
+    icon: ImageIcon,
+    path: "https://optiimg.karthikponnam.dev/",
+    color: "text-orange-600",
+    bgColor: "bg-orange-600/10",
+    isExternal: true,
   },
 ];
 

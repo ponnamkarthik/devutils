@@ -9,7 +9,7 @@ export const viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://devutils.app"),
+  metadataBase: new URL("https://devutils.karthikponnam.dev"),
   applicationName: "DevUtils",
   title: {
     default: "DevUtils - Developer Tools & Utilities Collection",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://devutils.app",
+    url: "https://devutils.karthikponnam.dev",
     title: "DevUtils - Developer Tools & Utilities",
     description:
       "Free online developer tools for formatting, converting, encoding, and debugging.",

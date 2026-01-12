@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://devutils.app";
+  const baseUrl = "https://devutils.karthikponnam.dev";
   const currentDate = new Date().toISOString();
 
   const routes = [
@@ -21,6 +21,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/url/decode",
     "/yaml/json",
     "/yaml/yaml",
+    "/toml/json",
+    "/toml/toml",
     "/csv/json",
     "/csv/csv",
     "/sql",
@@ -34,11 +36,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/string-inspector",
     "/color",
     "/svg",
+    "/css-units",
     "/world-clock",
     "/unix-time",
     "/jwt",
     "/http-builder",
     "/markdown",
+    "/speed-test",
     "/privacy",
     "/terms",
   ];
