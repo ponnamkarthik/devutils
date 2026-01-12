@@ -97,7 +97,7 @@ function hello() {
 
 ## Links & Images
 [DevUtils](/)
-![Image](https://via.placeholder.com/150)
+![Image](https://picsum.photos/300/200)
 
 ## Tables
 | Syntax | Description |
