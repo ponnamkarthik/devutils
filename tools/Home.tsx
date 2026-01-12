@@ -141,6 +141,14 @@ const TOOLS = [
     bgColor: "bg-pink-600/10",
   },
   {
+    title: "SVG Editor",
+    description: "View, optimize, edit, and transform SVG code.",
+    icon: ImageIcon,
+    path: "/svg",
+    color: "text-orange-500",
+    bgColor: "bg-orange-500/10",
+  },
+  {
     title: "Image Compressor",
     description:
       "Compress and convert images (PNG, JPEG, WebP) locally. High performance.",

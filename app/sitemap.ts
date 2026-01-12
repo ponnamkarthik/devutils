@@ -33,6 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/diff",
     "/string-inspector",
     "/color",
+    "/svg",
     "/world-clock",
     "/unix-time",
     "/jwt",

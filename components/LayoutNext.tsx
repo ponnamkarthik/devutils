@@ -78,6 +78,7 @@ const TOOL_GROUPS = [
       { name: "Diff Viewer", path: "/diff", icon: FileDiff },
       { name: "String Inspector", path: "/string-inspector", icon: Type },
       { name: "Color Tools", path: "/color", icon: Palette },
+      { name: "SVG Editor", path: "/svg", icon: ImageIcon },
       { name: "World Clock", path: "/world-clock", icon: Globe },
       { name: "Unix Timestamp", path: "/unix-time", icon: Clock },
       { name: "JWT Debugger", path: "/jwt", icon: ShieldCheck },
