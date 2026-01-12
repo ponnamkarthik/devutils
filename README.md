@@ -148,29 +148,11 @@ npm run lint
 npx tsc --noEmit
 ```
 
-## 📦 Deployment
-
-### Vercel (Recommended)
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new)
-
-```bash
-npm install -g vercel
-vercel
-```
-
 ### Netlify
 
 ```bash
 npm install -g netlify-cli
 netlify deploy
-```
-
-### Docker
-
-```bash
-docker build -t devutils .
-docker run -p 3000:3000 devutils
 ```
 
 ## 🤝 Contributing
@@ -196,23 +178,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-- 📧 Email: support@devutils.app
 - 🐛 Issues: [GitHub Issues](https://github.com/ponnamkarthik/devutils/issues)
-- 💬 Discussions: [GitHub Discussions](https://github.com/ponnamkarthik/devutils/discussions)
-
-## 🗺️ Roadmap
-
-- [ ] Add more tools (XML formatter, GraphQL prettifier)
-- [ ] Add user preferences sync
-- [ ] Add export/import functionality
-- [ ] Add keyboard shortcuts
-- [ ] Add API integration for some tools
-- [ ] Add offline PWA support
-- [ ] Add tool bookmarks/favorites
-- [ ] Add recent history
 
 ---
 
 Made with ❤️ by developers, for developers.
 
-**[View Live Demo](https://devutils.app)** | **[Documentation](https://docs.devutils.app)** | **[Changelog](CHANGELOG.md)**
+**[View Live Demo](https://devutils.karthikponnam.dev/)** 
