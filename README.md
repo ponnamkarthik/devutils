@@ -118,14 +118,6 @@ devutils/
 
 ## 🔧 Configuration
 
-### Environment Variables
-
-Create a `.env.local` file:
-
-```env
-NEXT_PUBLIC_SITE_URL=https://your-domain.com
-```
-
 ### Next.js Config
 
 Edit `next.config.js` to customize:
