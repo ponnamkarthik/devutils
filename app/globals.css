@@ -1,0 +1,125 @@
+@import "reactflow/dist/style.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light Theme: Slate & Emerald */
+    --background: 0 0% 100%; /* White */
+    --foreground: 222 47% 11%; /* Slate 900 */
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    /* Emerald Accent */
+    --primary: 160 84% 39%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary Surfaces */
+    --secondary: 210 40% 96.1%; /* Slate 100 */
+    --secondary-foreground: 222 47% 11%;
+
+    /* Sidebar / Muted */
+    --muted: 210 40% 96.1%; /* Slate 100 */
+    --muted-foreground: 215 16% 47%; /* Slate 500 */
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214 32% 91%; /* Slate 200 */
+    --input: 214 32% 91%;
+    --ring: 160 84% 39%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* Dark Theme: Slate/Emerald */
+    --background: 222 84% 5%; /* Slate 950 */
+    --foreground: 214 32% 91%; /* Slate 200 */
+
+    --card: 222 47% 11%; /* Slate 900 */
+    --card-foreground: 214 32% 91%;
+
+    --popover: 215 28% 17%; /* Slate 800 */
+    --popover-foreground: 214 32% 91%;
+
+    /* Emerald Accent */
+    --primary: 160 84% 39%; /* Emerald 500 */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 215 28% 17%; /* Slate 800 */
+    --secondary-foreground: 214 32% 91%;
+
+    /* Sidebar background */
+    --muted: 222 47% 11%; /* Slate 900 */
+    --muted-foreground: 215 20% 65%; /* Slate 400 */
+
+    --accent: 215 28% 17%; /* Slate 800 */
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84% 60%; /* Red 500 */
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 215 28% 17%; /* Slate 800 */
+    --input: 215 28% 17%;
+    --ring: 160 84% 39%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family:
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Arial, sans-serif;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
+  }
+
+  ::selection {
+    @apply bg-primary text-white;
+  }
+}
+
+/* Refined Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.3);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+}
+
+/* Prism Overrides for consistency */
+pre[class*="language-"] {
+  margin: 0 !important;
+  background: transparent !important;
+  text-shadow: none !important;
+}
+code[class*="language-"],
+pre[class*="language-"] {
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace !important;
+  font-size: 0.875rem !important;
+  line-height: 1.5 !important;
+}

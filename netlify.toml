@@ -1,0 +1,17 @@
+[build]
+  command = "npm run build"
+
+# Netlify's official Next.js runtime
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# PWA: ensure the service worker is always revalidated so updates apply quickly.
+[[headers]]
+  for = "/service-worker.js"
+  [headers.values]
+    Cache-Control = "no-cache"
+
+[[headers]]
+  for = "/site.webmanifest"
+  [headers.values]
+    Cache-Control = "no-cache"

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DevUtils - Offline Developer Tools</title>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <!-- PrismJS Theme (One Dark / Tomorrow Night inspired) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <!-- React Flow CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/reactflow@11.11.3/dist/style.css" rel="stylesheet" />
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          container: {
+            center: true,
+            padding: "2rem",
+            screens: {
+              "2xl": "1400px",
+            },
+          },
+          extend: {
+            colors: {
+              border: "hsl(var(--border))",
+              input: "hsl(var(--input))",
+              ring: "hsl(var(--ring))",
+              background: "hsl(var(--background))",
+              foreground: "hsl(var(--foreground))",
+              primary: {
+                DEFAULT: "hsl(var(--primary))",
+                foreground: "hsl(var(--primary-foreground))",
+              },
+              secondary: {
+                DEFAULT: "hsl(var(--secondary))",
+                foreground: "hsl(var(--secondary-foreground))",
+              },
+              destructive: {
+                DEFAULT: "hsl(var(--destructive))",
+                foreground: "hsl(var(--destructive-foreground))",
+              },
+              muted: {
+                DEFAULT: "hsl(var(--muted))",
+                foreground: "hsl(var(--muted-foreground))",
+              },
+              accent: {
+                DEFAULT: "hsl(var(--accent))",
+                foreground: "hsl(var(--accent-foreground))",
+              },
+              popover: {
+                DEFAULT: "hsl(var(--popover))",
+                foreground: "hsl(var(--popover-foreground))",
+              },
+              card: {
+                DEFAULT: "hsl(var(--card))",
+                foreground: "hsl(var(--card-foreground))",
+              },
+            },
+            borderRadius: {
+              lg: "var(--radius)",
+              md: "calc(var(--radius) - 2px)",
+              sm: "calc(var(--radius) - 4px)",
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+      :root {
+        /* Light Theme: Slate & Emerald Inversion */
+        --background: 0 0% 100%;       /* White */
+        --foreground: 222 47% 11%;     /* Slate 900 */
+        
+        --card: 0 0% 100%;
+        --card-foreground: 222 47% 11%;
+        
+        --popover: 0 0% 100%;
+        --popover-foreground: 222 47% 11%;
+        
+        /* Emerald Accent (Matches provided accent) */
+        --primary: 160 84% 39%;
+        --primary-foreground: 0 0% 100%;
+        
+        /* Secondary Surfaces */
+        --secondary: 210 40% 96.1%;    /* Slate 100 */
+        --secondary-foreground: 222 47% 11%;
+        
+        /* Sidebar / Muted */
+        --muted: 210 40% 96.1%;        /* Slate 100 */
+        --muted-foreground: 215 16% 47%; /* Slate 500 */
+        
+        --accent: 210 40% 96.1%;
+        --accent-foreground: 222 47% 11%;
+        
+        --destructive: 0 84% 60%;
+        --destructive-foreground: 210 40% 98%;
+        
+        --border: 214 32% 91%;         /* Slate 200 */
+        --input: 214 32% 91%;
+        --ring: 160 84% 39%;
+        
+        --radius: 0.5rem;
+      }
+  
+      .dark {
+        /* Dark Theme: Matching provided Slate/Emerald tokens */
+        --background: 222 84% 5%;      /* Slate 950 */
+        --foreground: 214 32% 91%;     /* Slate 200 */
+        
+        --card: 222 47% 11%;           /* Slate 900 (Surface 1) */
+        --card-foreground: 214 32% 91%;
+        
+        --popover: 215 28% 17%;        /* Slate 800 (Surface 2) */
+        --popover-foreground: 214 32% 91%;
+        
+        /* Emerald Accent */
+        --primary: 160 84% 39%;        /* Emerald 500 */
+        --primary-foreground: 0 0% 100%; /* White */
+        
+        --secondary: 215 28% 17%;      /* Slate 800 */
+        --secondary-foreground: 214 32% 91%;
+        
+        /* Sidebar background - Distinct from Main BG */
+        --muted: 222 47% 11%;          /* Slate 900 (Surface 1) */
+        --muted-foreground: 215 20% 65%; /* Slate 400 */
+        
+        --accent: 215 28% 17%;         /* Slate 800 */
+        --accent-foreground: 210 40% 98%;
+        
+        --destructive: 0 84% 60%;      /* Red 500 */
+        --destructive-foreground: 0 0% 100%;
+        
+        --border: 215 28% 17%;         /* Slate 800 */
+        --input: 215 28% 17%;
+        --ring: 160 84% 39%;
+      }
+      
+      body {
+        background-color: hsl(var(--background));
+        color: hsl(var(--foreground));
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        font-feature-settings: "rlig" 1, "calt" 1;
+      }
+
+      ::selection {
+        background: hsl(var(--primary));
+        color: white;
+      }
+
+      /* Refined Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: hsl(var(--muted-foreground) / 0.3);
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: hsl(var(--muted-foreground) / 0.5);
+      }
+      
+      /* Prism Overrides for consistency */
+      pre[class*="language-"] {
+        margin: 0 !important;
+        background: transparent !important;
+        text-shadow: none !important;
+      }
+      code[class*="language-"], pre[class*="language-"] {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+        font-size: 0.875rem !important; /* text-sm */
+        line-height: 1.5 !important;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@18.3.1",
+    "react/": "https://esm.sh/react@18.3.1/",
+    "react-dom": "https://esm.sh/react-dom@18.3.1?deps=react@18.3.1",
+    "react-dom/client": "https://esm.sh/react-dom@18.3.1/client?deps=react@18.3.1",
+    "react-router-dom": "https://esm.sh/react-router-dom@6.23.1?deps=react@18.3.1,react-dom@18.3.1",
+    "clsx": "https://esm.sh/clsx@2.1.1",
+    "lucide-react": "https://esm.sh/lucide-react@0.454.0?deps=react@18.3.1",
+    "tailwind-merge": "https://esm.sh/tailwind-merge@2.3.0",
+    "uuid": "https://esm.sh/uuid@10.0.0",
+    "sql-formatter": "https://esm.sh/sql-formatter@15.3.1",
+    "papaparse": "https://esm.sh/papaparse@5.4.1",
+    "cronstrue": "https://esm.sh/cronstrue@2.50.0",
+    "prettier": "https://esm.sh/prettier@3.3.3/standalone.mjs",
+    "prettier/plugins/estree": "https://esm.sh/prettier@3.3.3/plugins/estree.mjs",
+    "prettier/plugins/babel": "https://esm.sh/prettier@3.3.3/plugins/babel.mjs",
+    "prettier/plugins/html": "https://esm.sh/prettier@3.3.3/plugins/html.mjs",
+    "prettier/plugins/postcss": "https://esm.sh/prettier@3.3.3/plugins/postcss.mjs",
+    "prettier/plugins/markdown": "https://esm.sh/prettier@3.3.3/plugins/markdown.mjs",
+    "prettier/plugins/yaml": "https://esm.sh/prettier@3.3.3/plugins/yaml.mjs",
+    "prettier/plugins/graphql": "https://esm.sh/prettier@3.3.3/plugins/graphql.mjs",
+    "prismjs": "https://esm.sh/prismjs@1.29.0",
+    "reactflow": "https://esm.sh/reactflow@11.11.3?deps=react@18.3.1,react-dom@18.3.1",
+    "dagre": "https://esm.sh/dagre@0.8.5",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "prettier/": "https://esm.sh/prettier@^3.7.4/",
+    "@monaco-editor/react": "https://esm.sh/@monaco-editor/react@4.6.0?deps=react@18.3.1,react-dom@18.3.1",
+    "html-to-image": "https://esm.sh/html-to-image@1.11.11",
+    "react-qr-code": "https://esm.sh/react-qr-code@2.0.12?deps=react@18.3.1",
+    "culori": "https://esm.sh/culori@3.3.0",
+    "marked": "https://esm.sh/marked@12.0.0",
+    "js-yaml": "https://esm.sh/js-yaml@4.1.0"
+  }
+}
+</script>
+<!-- PrismJS Global Script for Autoloader -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>

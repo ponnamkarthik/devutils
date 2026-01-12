@@ -1,0 +1,5 @@
+{
+  "name": "DevUtils",
+  "description": "An offline-first, client-side suite of developer tools designed for performance and privacy. Includes JSON formatting, UUID generation, Base64 utilities, and more.",
+  "requestFramePermissions": []
+}
