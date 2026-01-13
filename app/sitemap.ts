@@ -34,6 +34,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/fake-data",
     "/qr-code",
     "/diff",
+    "/api-docs",
     "/log-inspector",
     "/string-inspector",
     "/color",

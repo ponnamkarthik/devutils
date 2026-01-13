@@ -42,43 +42,47 @@ import {
   Activity,
   Share2,
   FileSearch,
+  Book,
 } from "lucide-react";
 import { Button } from "./UI";
 import Image from "next/image";
 
 const TOOL_GROUPS = [
   {
-    label: "Format & Transform",
+    label: "Popular",
     items: [
       { name: "JSON Tools", path: "/json/format", icon: FileJson },
+      { name: "URL Tools", path: "/url/parser", icon: LinkIcon },
+      { name: "Base64 Converter", path: "/base64/encode", icon: Binary },
+      { name: "JWT Debugger", path: "/jwt", icon: ShieldCheck },
+      { name: "UUID Generator", path: "/uuid", icon: Fingerprint },
+      { name: "Hash Generator", path: "/hash", icon: Hash },
+      { name: "Hex Converter", path: "/hex", icon: Binary },
+      { name: "Regex Tester", path: "/regex", icon: Regex },
+      { name: "Code Formatter", path: "/code/formatter", icon: Code },
+      { name: "Code Minifier", path: "/code/minifier", icon: FileCode },
+      { name: "API Docs Generator", path: "/api-docs", icon: Book },
+      { name: "HTTP Request Builder", path: "/http-builder", icon: Send },
+    ],
+  },
+  {
+    label: "Format & Transform",
+    items: [
       { name: "YAML Converter", path: "/yaml/json", icon: FileText },
       { name: "TOML Converter", path: "/toml/json", icon: FileCode },
       { name: "CSV Converter", path: "/csv/json", icon: Sheet },
       { name: "SQL Formatter", path: "/sql", icon: Database },
-      { name: "Code Formatter", path: "/code/formatter", icon: Code },
-      { name: "Code Minifier", path: "/code/minifier", icon: FileCode },
       { name: "CSS Unit Converter", path: "/css-units", icon: Ruler },
       { name: "CSS Grid Generator", path: "/css-grid", icon: LayoutGrid },
     ],
   },
   {
-    label: "Encode & Decode",
-    items: [
-      { name: "Base64", path: "/base64/encode", icon: Binary },
-      { name: "Hex Converter", path: "/hex", icon: Binary },
-      { name: "URL Tools", path: "/url/parser", icon: LinkIcon },
-      { name: "Hash Generator", path: "/hash", icon: Hash },
-    ],
-  },
-  {
     label: "Generate & Test",
     items: [
-      { name: "UUID Generator", path: "/uuid", icon: Fingerprint },
-      { name: "Regex Tester", path: "/regex", icon: Regex },
-      { name: "Cron Expression", path: "/cron", icon: Clock },
+      { name: "Cron Generator", path: "/cron", icon: Clock },
       { name: "Password Generator", path: "/password", icon: KeyRound },
       { name: "Fake Data Generator", path: "/fake-data", icon: Database },
-      { name: "QR Code", path: "/qr-code", icon: QrCode },
+      { name: "QR Code Generator", path: "/qr-code", icon: QrCode },
     ],
   },
   {
@@ -87,15 +91,13 @@ const TOOL_GROUPS = [
       { name: "Diff Viewer", path: "/diff", icon: FileDiff },
       { name: "Log Inspector", path: "/log-inspector", icon: FileSearch },
       { name: "String Inspector", path: "/string-inspector", icon: Type },
-      { name: "Color Tools", path: "/color", icon: Palette },
+      { name: "Color Picker", path: "/color", icon: Palette },
       { name: "SVG Editor", path: "/svg", icon: ImageIcon },
       { name: "Link Preview", path: "/link-preview", icon: Share2 },
-      { name: "Speed Test", path: "/speed-test", icon: Activity },
+      { name: "Internet Speed Test", path: "/speed-test", icon: Activity },
       { name: "World Clock", path: "/world-clock", icon: Globe },
       { name: "Unix Timestamp", path: "/unix-time", icon: Clock },
-      { name: "JWT Debugger", path: "/jwt", icon: ShieldCheck },
-      { name: "HTTP Builder", path: "/http-builder", icon: Send },
-      { name: "Markdown Preview", path: "/markdown", icon: FileText },
+      { name: "Markdown Editor", path: "/markdown", icon: FileText },
     ],
   },
 ];

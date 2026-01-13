@@ -1,4 +1,4 @@
-const CACHE_VERSION = "00a3226";
+const CACHE_VERSION = "3d9edcd";
 const CACHE_NAME = `devutils-${CACHE_VERSION}`;
 const OFFLINE_URL = "/offline";
 

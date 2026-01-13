@@ -34,6 +34,7 @@ import {
   Activity,
   Share2,
   FileSearch,
+  Book,
 } from "lucide-react";
 
 const TOOLS = [
@@ -47,24 +48,6 @@ const TOOLS = [
     bgColor: "bg-yellow-500/10",
   },
   {
-    title: "Base64 Converter",
-    description:
-      "Encode and decode text or files to Base64 format securely in your browser.",
-    icon: Binary,
-    path: "/base64/encode",
-    color: "text-emerald-500",
-    bgColor: "bg-emerald-500/10",
-  },
-  {
-    title: "Hex Converter",
-    description:
-      "Convert text to hex and decode hex back to text. Includes decimal/hex/binary/octal base conversion.",
-    icon: Binary,
-    path: "/hex",
-    color: "text-purple-500",
-    bgColor: "bg-purple-500/10",
-  },
-  {
     title: "URL Tools",
     description:
       "Parse, build, encode, and decode URLs with an interactive query builder.",
@@ -72,6 +55,15 @@ const TOOLS = [
     path: "/url/parser",
     color: "text-blue-500",
     bgColor: "bg-blue-500/10",
+  },
+  {
+    title: "Base64 Converter",
+    description:
+      "Encode and decode text or files to Base64 format securely in your browser.",
+    icon: Binary,
+    path: "/base64/encode",
+    color: "text-emerald-500",
+    bgColor: "bg-emerald-500/10",
   },
   {
     title: "JWT Debugger",
@@ -99,6 +91,15 @@ const TOOLS = [
     path: "/hash",
     color: "text-cyan-500",
     bgColor: "bg-cyan-500/10",
+  },
+  {
+    title: "Hex Converter",
+    description:
+      "Convert text to hex and decode hex back to text. Includes decimal/hex/binary/octal base conversion.",
+    icon: Binary,
+    path: "/hex",
+    color: "text-purple-500",
+    bgColor: "bg-purple-500/10",
   },
   {
     title: "Regex Tester",
@@ -189,6 +190,15 @@ const TOOLS = [
     bgColor: "bg-indigo-500/10",
   },
   {
+    title: "String Inspector",
+    description:
+      "Analyze character counts, bytes (UTF-8), word distribution, and Unicode points.",
+    icon: Type,
+    path: "/string-inspector",
+    color: "text-blue-500",
+    bgColor: "bg-blue-500/10",
+  },
+  {
     title: "Log Inspector",
     description:
       "Inspect and filter JSON and Common Log Format (CLF) logs with level toggles and search.",
@@ -198,13 +208,39 @@ const TOOLS = [
     bgColor: "bg-blue-500/10",
   },
   {
-    title: "String Inspector",
+    title: "API Docs Generator",
     description:
-      "Analyze character counts, bytes (UTF-8), word distribution, and Unicode points.",
-    icon: Type,
-    path: "/string-inspector",
+      "Convert Postman Collection v2.1 or OpenAPI v3 (JSON/YAML) into a single HTML documentation page.",
+    icon: Book,
+    path: "/api-docs",
     color: "text-blue-500",
     bgColor: "bg-blue-500/10",
+  },
+  {
+    title: "HTTP Request Builder",
+    description:
+      "Construct API requests with params, auth, and body. Export to cURL, Fetch, and Axios.",
+    icon: Send,
+    path: "/http-builder",
+    color: "text-orange-600",
+    bgColor: "bg-orange-600/10",
+  },
+  {
+    title: "Link Preview",
+    description: "Generate meta tags & preview social cards.",
+    icon: Share2,
+    path: "/link-preview",
+    color: "text-indigo-500",
+    bgColor: "bg-indigo-500/10",
+  },
+  {
+    title: "Color Picker",
+    description:
+      "Advanced OKLCH color picker with P3 support, palettes, and contrast checking.",
+    icon: Palette,
+    path: "/color",
+    color: "text-pink-600",
+    bgColor: "bg-pink-600/10",
   },
   {
     title: "CSS Unit Converter",
@@ -224,30 +260,12 @@ const TOOLS = [
     bgColor: "bg-indigo-500/10",
   },
   {
-    title: "Color Picker",
-    description:
-      "Advanced OKLCH color picker with P3 support, palettes, and contrast checking.",
-    icon: Palette,
-    path: "/color",
-    color: "text-pink-600",
-    bgColor: "bg-pink-600/10",
-  },
-  {
     title: "SVG Editor",
     description: "View, optimize, edit, and transform SVG code.",
     icon: ImageIcon,
     path: "/svg",
     color: "text-orange-500",
     bgColor: "bg-orange-500/10",
-  },
-  {
-    title: "QR Code Generator",
-    description:
-      "Create customizable QR codes for URLs, text, and Wi-Fi credentials instantly.",
-    icon: QrCode,
-    path: "/qr-code",
-    color: "text-slate-500",
-    bgColor: "bg-slate-500/10",
   },
   {
     title: "Markdown Editor",
@@ -259,21 +277,13 @@ const TOOLS = [
     bgColor: "bg-slate-600/10",
   },
   {
-    title: "Link Preview",
-    description: "Generate meta tags & preview social cards.",
-    icon: Share2,
-    path: "/link-preview",
-    color: "text-indigo-500",
-    bgColor: "bg-indigo-500/10",
-  },
-  {
-    title: "HTTP Request Builder",
+    title: "QR Code Generator",
     description:
-      "Construct API requests with params, auth, and body. Export to cURL, Fetch, and Axios.",
-    icon: Send,
-    path: "/http-builder",
-    color: "text-orange-600",
-    bgColor: "bg-orange-600/10",
+      "Create customizable QR codes for URLs, text, and Wi-Fi credentials instantly.",
+    icon: QrCode,
+    path: "/qr-code",
+    color: "text-slate-500",
+    bgColor: "bg-slate-500/10",
   },
   {
     title: "Password Generator",

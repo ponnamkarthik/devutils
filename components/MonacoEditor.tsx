@@ -18,6 +18,7 @@ interface MonacoEditorProps {
   lineHighlight?: "all" | "line" | "none" | "gutter";
   label?: string;
   actions?: React.ReactNode;
+  placeholder?: string;
   className?: string;
 }
 
@@ -30,6 +31,7 @@ export const MonacoEditor: React.FC<MonacoEditorProps> = ({
   lineHighlight = "all",
   label,
   actions,
+  placeholder,
   className,
 }) => {
   const [editorTheme, setEditorTheme] = useState("devutils-light");
@@ -103,6 +105,15 @@ export const MonacoEditor: React.FC<MonacoEditorProps> = ({
         </div>
       )}
       <div className="flex-1 relative min-h-0 bg-card">
+        {placeholder && (!value || value.trim().length === 0) && (
+          <div className="absolute inset-0 z-10 pointer-events-none">
+            <div className="p-3 pt-3">
+              <div className="text-xs text-muted-foreground/70 font-mono leading-relaxed max-w-[70ch]">
+                {placeholder}
+              </div>
+            </div>
+          </div>
+        )}
         <Editor
           height="100%"
           defaultLanguage={language}
