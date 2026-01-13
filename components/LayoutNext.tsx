@@ -40,6 +40,7 @@ import {
   Ruler,
   Activity,
   Share2,
+  FileSearch,
 } from "lucide-react";
 import { Button } from "./UI";
 import Image from "next/image";
@@ -81,6 +82,7 @@ const TOOL_GROUPS = [
     label: "Utilities",
     items: [
       { name: "Diff Viewer", path: "/diff", icon: FileDiff },
+      { name: "Log Inspector", path: "/log-inspector", icon: FileSearch },
       { name: "String Inspector", path: "/string-inspector", icon: Type },
       { name: "Color Tools", path: "/color", icon: Palette },
       { name: "SVG Editor", path: "/svg", icon: ImageIcon },

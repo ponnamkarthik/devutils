@@ -32,6 +32,7 @@ import {
   Ruler,
   Activity,
   Share2,
+  FileSearch,
 } from "lucide-react";
 
 const TOOLS = [
@@ -176,6 +177,15 @@ const TOOLS = [
     path: "/diff",
     color: "text-indigo-500",
     bgColor: "bg-indigo-500/10",
+  },
+  {
+    title: "Log Inspector",
+    description:
+      "Inspect and filter JSON and Common Log Format (CLF) logs with level toggles and search.",
+    icon: FileSearch,
+    path: "/log-inspector",
+    color: "text-blue-500",
+    bgColor: "bg-blue-500/10",
   },
   {
     title: "String Inspector",

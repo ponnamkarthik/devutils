@@ -33,6 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/fake-data",
     "/qr-code",
     "/diff",
+    "/log-inspector",
     "/string-inspector",
     "/color",
     "/svg",
