@@ -6,7 +6,7 @@ import { JsonConverterTool } from "@/tools/JsonConverterTool";
 export const metadata: Metadata = toolMetadata({
   title: "JSON Converter",
   description:
-    "Convert and transform JSON quickly. Helpful for working with APIs and data structures.",
+    "Generate types/schemas from JSON: TypeScript, Zod, Go, Java, Kotlin, Rust, Dart (incl. Freezed), Python, C#, Swift, C++, Objective-C, PHP, Ruby, Scala, and JSON Schema.",
   path: "/json/converter",
   keywords: [
     "json converter",

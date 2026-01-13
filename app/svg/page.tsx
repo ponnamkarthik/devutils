@@ -6,7 +6,7 @@ import { SvgTool } from "@/tools/SVGTool";
 export const metadata: Metadata = toolMetadata({
   title: "SVG Editor",
   description:
-    "View, optimize, edit, and transform SVG code locally in your browser.",
+    "View and edit SVG code locally: format (Prettier), minify, resize, flip/scale/translate, preview on different backgrounds, and export.",
   path: "/svg",
   keywords: [
     "svg editor",

@@ -6,7 +6,7 @@ import { JsonTool } from "@/tools/JsonTool";
 export const metadata: Metadata = toolMetadata({
   title: "JSON Fixer",
   description:
-    "Fix common JSON issues and validate malformed JSON. Make broken JSON parseable again.",
+    "Auto-fix common JSON issues (trailing commas, single quotes, unquoted keys) and reformat into valid, parseable JSON.",
   path: "/json/fix",
   keywords: [
     "json fixer",

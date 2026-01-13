@@ -6,7 +6,7 @@ import { HashTool } from "@/tools/HashTool";
 export const metadata: Metadata = toolMetadata({
   title: "Hash Generator",
   description:
-    "Generate hashes (MD5, SHA-1, SHA-256, and more) for strings to verify integrity and debug checksums.",
+    "Generate SHA hashes (SHA-1, SHA-256, SHA-384, SHA-512) for text or files using native browser crypto APIs.",
   path: "/hash",
   keywords: [
     "hash generator",

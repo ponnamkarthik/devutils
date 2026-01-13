@@ -6,7 +6,7 @@ import { CsvJsonTool } from "@/tools/CsvJsonTool";
 export const metadata: Metadata = toolMetadata({
   title: "JSON to CSV Converter",
   description:
-    "Convert JSON to CSV instantly. Export API payloads into spreadsheet-friendly CSV.",
+    "Convert JSON arrays/objects to CSV (via PapaParse) for spreadsheet export, with file upload and copy/download options.",
   path: "/csv/csv",
   keywords: [
     "json to csv",

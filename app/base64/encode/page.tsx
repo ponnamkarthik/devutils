@@ -6,7 +6,7 @@ import { Base64Tool } from "@/tools/Base64Tool";
 export const metadata: Metadata = toolMetadata({
   title: "Base64 Encode",
   description:
-    "Encode text to Base64 instantly. Useful for APIs, auth headers, and quick encoding workflows.",
+    "Encode text or files to Base64 (Data URL input supported). Copy results instantly for APIs, headers, and debugging.",
   path: "/base64/encode",
   keywords: [
     "base64 encode",

@@ -6,7 +6,7 @@ import { RegexTool } from "@/tools/RegexTool";
 export const metadata: Metadata = toolMetadata({
   title: "Regex Tester",
   description:
-    "Test regular expressions with instant matches and groups. Useful for debugging patterns and replacements.",
+    "Test JavaScript regular expressions with flags (g/i/m/s/u/y), match highlighting, groups, and a built-in cheat sheet.",
   path: "/regex",
   keywords: [
     "regex tester",

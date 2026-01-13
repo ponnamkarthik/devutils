@@ -6,7 +6,7 @@ import { UrlTool } from "@/tools/UrlTool";
 export const metadata: Metadata = toolMetadata({
   title: "URL Encode",
   description:
-    "Encode URLs and query parameters safely for use in links and API requests.",
+    "Encode URLs safely using encodeURIComponent or encodeURI. Great for query strings, redirects, and API requests.",
   path: "/url/encode",
   keywords: [
     "url encode",

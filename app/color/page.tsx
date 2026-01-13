@@ -6,7 +6,7 @@ import { ColorTool } from "@/tools/ColorTool";
 export const metadata: Metadata = toolMetadata({
   title: "Color Tool",
   description:
-    "Convert and inspect colors (HEX, RGB, HSL, OKLCH), generate palettes, and pick accessible combinations.",
+    "Explore colors in OKLCH with conversions to HEX/RGB/CSS (including display-p3) plus palette generation and WCAG contrast checks.",
   path: "/color",
   keywords: [
     "color converter",

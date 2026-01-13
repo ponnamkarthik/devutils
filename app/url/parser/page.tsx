@@ -6,7 +6,7 @@ import { UrlTool } from "@/tools/UrlTool";
 export const metadata: Metadata = toolMetadata({
   title: "URL Parser",
   description:
-    "Parse URLs and extract components like protocol, host, pathname, query params, and hash.",
+    "Parse and edit URLs: protocol, host, port, path, hash, and query params. Add/remove parameters and rebuild the final URL.",
   path: "/url/parser",
   keywords: [
     "url parser",

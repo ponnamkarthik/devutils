@@ -6,7 +6,7 @@ import { SqlTool } from "@/tools/SqlTool";
 export const metadata: Metadata = toolMetadata({
   title: "SQL Formatter",
   description:
-    "Format and prettify SQL queries for readability. Great for debugging and code reviews.",
+    "Format SQL for readability with dialect support (PostgreSQL, MySQL/MariaDB, SQLite, SQL Server T-SQL, Oracle PL/SQL).",
   path: "/sql",
   keywords: [
     "sql formatter",

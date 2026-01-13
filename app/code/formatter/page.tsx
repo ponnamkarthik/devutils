@@ -6,7 +6,7 @@ import { CodeFormatterTool } from "@/tools/CodeFormatterTool";
 export const metadata: Metadata = toolMetadata({
   title: "Code Formatter",
   description:
-    "Format and beautify code (JavaScript, TypeScript, HTML, CSS, and more) with consistent styling.",
+    "Format code with Prettier: JavaScript, TypeScript, JSON, HTML, CSS/SCSS, Markdown, YAML, and GraphQL (configurable options).",
   path: "/code/formatter",
   keywords: [
     "code formatter",

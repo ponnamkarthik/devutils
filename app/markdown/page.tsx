@@ -6,7 +6,7 @@ import { MarkdownTool } from "@/tools/MarkdownTool";
 export const metadata: Metadata = toolMetadata({
   title: "Markdown Preview",
   description:
-    "Preview and edit Markdown with live rendering. Great for READMEs, docs, and notes.",
+    "Live GitHub-flavored Markdown preview with export to HTML and print-friendly output. Great for READMEs and docs.",
   path: "/markdown",
   keywords: [
     "markdown preview",

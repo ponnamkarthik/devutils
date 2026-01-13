@@ -6,7 +6,7 @@ import { CronTool } from "@/tools/CronTool";
 export const metadata: Metadata = toolMetadata({
   title: "Cron Expression Tool",
   description:
-    "Build and validate cron expressions with readable schedules. Preview upcoming run times quickly.",
+    "Build and validate 5-field cron expressions with presets, field-by-field controls, and human-readable schedule descriptions.",
   path: "/cron",
   keywords: [
     "cron",

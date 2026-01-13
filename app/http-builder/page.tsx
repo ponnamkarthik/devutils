@@ -6,7 +6,7 @@ import { HttpRequestBuilderTool } from "@/tools/HttpRequestBuilderTool";
 export const metadata: Metadata = toolMetadata({
   title: "HTTP Request Builder",
   description:
-    "Build HTTP requests with headers, query params, and body. Generate curl and test API requests.",
+    "Build and send HTTP requests with query params, headers, auth (Bearer/Basic), and body (JSON, form-data, x-www-form-urlencoded). Generate curl/fetch/axios.",
   path: "/http-builder",
   keywords: [
     "http request builder",

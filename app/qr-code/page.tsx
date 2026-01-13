@@ -6,7 +6,7 @@ import { QrCodeTool } from "@/tools/QrCodeTool";
 export const metadata: Metadata = toolMetadata({
   title: "QR Code Generator",
   description:
-    "Generate QR codes for text and URLs instantly. Download as an image for sharing or printing.",
+    "Generate customizable QR codes (text/URL) with size, colors, and error correction. Export as PNG or SVG.",
   path: "/qr-code",
   keywords: [
     "qr code generator",

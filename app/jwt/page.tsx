@@ -6,7 +6,7 @@ import { JwtDebuggerTool } from "@/tools/JwtDebuggerTool";
 export const metadata: Metadata = toolMetadata({
   title: "JWT Debugger",
   description:
-    "Decode and inspect JWT headers and payloads. Verify expiration and claims quickly.",
+    "Decode and inspect JWT header/payload (Base64URL) and view claims like exp/iat. Note: this tool does not verify signatures.",
   path: "/jwt",
   keywords: [
     "jwt debugger",

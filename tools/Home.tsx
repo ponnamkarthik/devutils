@@ -31,6 +31,7 @@ import {
   KeyRound,
   Ruler,
   Activity,
+  Share2,
 } from "lucide-react";
 
 const TOOLS = [
@@ -227,6 +228,14 @@ const TOOLS = [
     path: "/markdown",
     color: "text-slate-600",
     bgColor: "bg-slate-600/10",
+  },
+  {
+    title: "Link Preview",
+    description: "Generate meta tags & preview social cards.",
+    icon: Share2,
+    path: "/link-preview",
+    color: "text-indigo-500",
+    bgColor: "bg-indigo-500/10",
   },
   {
     title: "HTTP Request Builder",

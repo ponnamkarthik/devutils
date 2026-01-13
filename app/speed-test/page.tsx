@@ -6,7 +6,7 @@ import { SpeedTestTool } from "@/tools/SpeedTestTool";
 export const metadata: Metadata = toolMetadata({
   title: "Internet Speed Test",
   description:
-    "Estimate your download speed and latency directly from the browser.",
+    "Estimate latency (HEAD request) and download speed by fetching a large file directly in the browser. No installs needed.",
   path: "/speed-test",
   keywords: [
     "internet speed test",

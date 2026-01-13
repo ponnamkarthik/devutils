@@ -39,6 +39,7 @@ import {
   KeyRound,
   Ruler,
   Activity,
+  Share2,
 } from "lucide-react";
 import { Button } from "./UI";
 import Image from "next/image";
@@ -83,6 +84,7 @@ const TOOL_GROUPS = [
       { name: "String Inspector", path: "/string-inspector", icon: Type },
       { name: "Color Tools", path: "/color", icon: Palette },
       { name: "SVG Editor", path: "/svg", icon: ImageIcon },
+      { name: "Link Preview", path: "/link-preview", icon: Share2 },
       { name: "Speed Test", path: "/speed-test", icon: Activity },
       { name: "World Clock", path: "/world-clock", icon: Globe },
       { name: "Unix Timestamp", path: "/unix-time", icon: Clock },

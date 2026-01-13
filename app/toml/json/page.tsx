@@ -5,7 +5,8 @@ import { TomlJsonTool } from "@/tools/TomlJsonTool";
 
 export const metadata: Metadata = toolMetadata({
   title: "TOML to JSON",
-  description: "Convert TOML to JSON with live validation and copy support.",
+  description:
+    "Convert TOML to JSON with parsing/validation, clear error messages, and one-click copy.",
   path: "/toml/json",
   keywords: ["toml to json", "toml converter", "config converter"],
 });

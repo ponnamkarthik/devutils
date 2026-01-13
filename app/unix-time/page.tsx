@@ -6,7 +6,7 @@ import { UnixTimeTool } from "@/tools/UnixTimeTool";
 export const metadata: Metadata = toolMetadata({
   title: "Unix Time Converter",
   description:
-    "Convert between Unix timestamps and human-readable dates. Works in seconds and milliseconds.",
+    "Convert Unix timestamps (seconds or milliseconds) to UTC/local/ISO with relative time, and convert dates back to epoch time.",
   path: "/unix-time",
   keywords: [
     "unix time",

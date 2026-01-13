@@ -6,7 +6,7 @@ import { UrlTool } from "@/tools/UrlTool";
 export const metadata: Metadata = toolMetadata({
   title: "URL Decode",
   description:
-    "Decode URL-encoded strings (percent-encoding) back into readable text.",
+    "Decode percent-encoded (URL-encoded) strings back into readable text. Useful for debugging query strings and redirects.",
   path: "/url/decode",
   keywords: [
     "url decode",

@@ -6,7 +6,7 @@ import { WorldClockTool } from "@/tools/WorldClockTool";
 export const metadata: Metadata = toolMetadata({
   title: "World Clock",
   description:
-    "Compare time across time zones and cities. Useful for scheduling meetings across regions.",
+    "Compare multiple cities/time zones, see offsets and abbreviations, and use a meeting-planner grid to pick overlap-friendly times.",
   path: "/world-clock",
   keywords: [
     "world clock",

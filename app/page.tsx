@@ -6,7 +6,7 @@ import { Home } from "@/tools/Home";
 export const metadata: Metadata = toolMetadata({
   title: "Developer Tools",
   description:
-    "Free online developer tools for formatting, converting, encoding, and debugging. Fast, private, and browser-based utilities.",
+    "Fast, privacy-friendly developer utilities: JSON format/minify/fix/graph, Base64 encode/decode, URL parse/encode/decode, JWT decode, SQL format, HTTP request builder, regex tester, UUIDs, timestamps, and more.",
   path: "/",
   keywords: [
     "developer tools",

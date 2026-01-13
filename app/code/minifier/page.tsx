@@ -6,7 +6,7 @@ import { CodeMinifierTool } from "@/tools/CodeMinifierTool";
 export const metadata: Metadata = toolMetadata({
   title: "Code Minifier",
   description:
-    "Minify and compress code for faster loading. Reduce file size for JavaScript, CSS, HTML, and more.",
+    "Minify JavaScript, CSS, and HTML by removing comments and collapsing whitespace. Includes size stats and copy output.",
   path: "/code/minifier",
   keywords: [
     "code minifier",

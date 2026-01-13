@@ -6,7 +6,7 @@ import { PasswordTool } from "@/tools/PasswordTool";
 export const metadata: Metadata = toolMetadata({
   title: "Password Generator",
   description:
-    "Generate strong passwords and passphrases with customizable length and character sets.",
+    "Generate strong passwords or passphrases with configurable rules (length, symbols, exclude similar chars) plus entropy estimation.",
   path: "/password",
   keywords: [
     "password generator",

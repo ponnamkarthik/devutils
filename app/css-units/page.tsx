@@ -6,7 +6,7 @@ import { CssUnitConverterTool } from "@/tools/CssUnitConverterTool";
 export const metadata: Metadata = toolMetadata({
   title: "CSS Unit Converter",
   description:
-    "Convert between CSS units like px, rem, em, %, vw, vh, vmin, vmax with configurable context.",
+    "Convert CSS units (px, rem, em, %, vw, vh, vmin, vmax, in/cm/mm/pt/pc) with configurable base font size and viewport context.",
   path: "/css-units",
   keywords: [
     "css unit converter",

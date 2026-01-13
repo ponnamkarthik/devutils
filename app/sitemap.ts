@@ -43,6 +43,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/http-builder",
     "/markdown",
     "/speed-test",
+    "/link-preview",
     "/privacy",
     "/terms",
   ];

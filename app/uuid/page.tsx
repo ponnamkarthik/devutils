@@ -6,7 +6,7 @@ import { UuidTool } from "@/tools/UuidTool";
 export const metadata: Metadata = toolMetadata({
   title: "UUID Generator",
   description:
-    "Generate UUIDs (v4) instantly for identifiers in apps, databases, and APIs.",
+    "Generate UUIDs in multiple versions (v1, v4, v6, v7, v8, and Nil) with bulk generation and one-click copy.",
   path: "/uuid",
   keywords: [
     "uuid generator",

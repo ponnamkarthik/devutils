@@ -6,7 +6,7 @@ import { DiffViewerTool } from "@/tools/DiffViewerTool";
 export const metadata: Metadata = toolMetadata({
   title: "Diff Viewer",
   description:
-    "Compare text side-by-side and highlight differences. Great for code reviews and config diffs.",
+    "Compare two text blocks with a side-by-side diff, syntax highlighting, and quick actions like swap and clear.",
   path: "/diff",
   keywords: [
     "diff viewer",
