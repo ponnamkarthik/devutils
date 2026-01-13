@@ -38,6 +38,7 @@ import {
   Send,
   KeyRound,
   Ruler,
+  LayoutGrid,
   Activity,
   Share2,
   FileSearch,
@@ -57,12 +58,14 @@ const TOOL_GROUPS = [
       { name: "Code Formatter", path: "/code/formatter", icon: Code },
       { name: "Code Minifier", path: "/code/minifier", icon: FileCode },
       { name: "CSS Unit Converter", path: "/css-units", icon: Ruler },
+      { name: "CSS Grid Generator", path: "/css-grid", icon: LayoutGrid },
     ],
   },
   {
     label: "Encode & Decode",
     items: [
       { name: "Base64", path: "/base64/encode", icon: Binary },
+      { name: "Hex Converter", path: "/hex", icon: Binary },
       { name: "URL Tools", path: "/url/parser", icon: LinkIcon },
       { name: "Hash Generator", path: "/hash", icon: Hash },
     ],

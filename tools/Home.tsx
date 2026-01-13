@@ -30,6 +30,7 @@ import {
   Send,
   KeyRound,
   Ruler,
+  LayoutGrid,
   Activity,
   Share2,
   FileSearch,
@@ -53,6 +54,15 @@ const TOOLS = [
     path: "/base64/encode",
     color: "text-emerald-500",
     bgColor: "bg-emerald-500/10",
+  },
+  {
+    title: "Hex Converter",
+    description:
+      "Convert text to hex and decode hex back to text. Includes decimal/hex/binary/octal base conversion.",
+    icon: Binary,
+    path: "/hex",
+    color: "text-purple-500",
+    bgColor: "bg-purple-500/10",
   },
   {
     title: "URL Tools",
@@ -201,6 +211,15 @@ const TOOLS = [
     description: "Convert between px, rem, em, %, vw, and more.",
     icon: Ruler,
     path: "/css-units",
+    color: "text-indigo-500",
+    bgColor: "bg-indigo-500/10",
+  },
+  {
+    title: "CSS Grid Generator",
+    description:
+      "Visually build CSS Grid layouts and export CSS + HTML for grid-template, gaps, and grid-area.",
+    icon: LayoutGrid,
+    path: "/css-grid",
     color: "text-indigo-500",
     bgColor: "bg-indigo-500/10",
   },
