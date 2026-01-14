@@ -15,6 +15,7 @@ import {
   Monitor,
   Copy,
   Check,
+  Wind,
 } from "lucide-react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
@@ -70,6 +71,12 @@ export const CssGridTool: React.FC = () => {
   // Copy State
   const [copiedCss, setCopiedCss] = useState(false);
   const [copiedHtml, setCopiedHtml] = useState(false);
+  const [copiedTailwind, setCopiedTailwind] = useState(false);
+
+  // UI State
+  const [outputMode, setOutputMode] = useState<"standard" | "tailwind">(
+    "standard"
+  );
 
   // Refs
   const containerRef = useRef<HTMLDivElement>(null);
@@ -122,14 +129,17 @@ export const CssGridTool: React.FC = () => {
     return items.some((item) => isOverlapping(selection, item));
   }, [isDragging, dragStart, dragCurrent, items]);
 
-  const copyToClipboard = (text: string, type: "css" | "html") => {
+  const copyToClipboard = (text: string, type: "css" | "html" | "tailwind") => {
     navigator.clipboard.writeText(text);
     if (type === "css") {
       setCopiedCss(true);
       setTimeout(() => setCopiedCss(false), 2000);
-    } else {
+    } else if (type === "html") {
       setCopiedHtml(true);
       setTimeout(() => setCopiedHtml(false), 2000);
+    } else {
+      setCopiedTailwind(true);
+      setTimeout(() => setCopiedTailwind(false), 2000);
     }
   };
 
@@ -204,6 +214,7 @@ export const CssGridTool: React.FC = () => {
   // --- Code Generation ---
 
   const generatedCode = useMemo(() => {
+    // 1. Standard CSS/HTML
     let css = `.parent {
     display: grid;
     grid-template-columns: repeat(${safeCols}, 1fr);
@@ -243,7 +254,56 @@ export const CssGridTool: React.FC = () => {
 
     html += `</div>`;
 
-    return { css, html };
+    // 2. Tailwind CSS
+    // Helper to determine if we can use standard classes or need arbitrary values
+    const getTw = (prefix: string, val: number, maxStandard: number) => {
+      if (val <= maxStandard) return `${prefix}-${val}`;
+      return `${prefix}-[${val}]`;
+    };
+
+    const parentClasses = [
+      "grid",
+      safeCols > 12
+        ? `grid-cols-[repeat(${safeCols},1fr)]`
+        : `grid-cols-${safeCols}`,
+      safeRows > 6
+        ? `grid-rows-[repeat(${safeRows},1fr)]`
+        : `grid-rows-${safeRows}`,
+      `gap-[${safeGap}px]`,
+    ].join(" ");
+
+    let tailwind = `<div class="${parentClasses} w-full min-h-screen bg-gray-50 p-4">\n`;
+
+    items.forEach((item, idx) => {
+      const rowSpan = item.rowEnd - item.rowStart;
+      const colSpan = item.colEnd - item.colStart;
+
+      const cls = [
+        // Start/Span
+        getTw("col-start", item.colStart, 13),
+        colSpan > 1 ? getTw("col-span", colSpan, 12) : "",
+        getTw("row-start", item.rowStart, 7),
+        rowSpan > 1 ? getTw("row-span", rowSpan, 6) : "",
+
+        // Visuals (to make the snippet usable immediately)
+        "bg-indigo-500",
+        "rounded-lg",
+        "text-white",
+        "flex",
+        "items-center",
+        "justify-center",
+        "font-bold",
+        "text-lg",
+        "shadow-sm",
+      ]
+        .filter(Boolean)
+        .join(" ");
+
+      tailwind += `    <div class="${cls}">${idx + 1}</div>\n`;
+    });
+    tailwind += `</div>`;
+
+    return { css, html, tailwind };
   }, [safeRows, safeCols, safeGap, items]);
 
   // --- Styling Constants ---
@@ -466,61 +526,115 @@ export const CssGridTool: React.FC = () => {
           </div>
 
           {/* Code Output */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 flex-none">
-            <Card className="h-80 md:h-96 flex flex-col p-0 border-border/60 shadow-sm bg-card overflow-hidden">
-              <div className="flex items-center justify-between px-3 py-2 border-b border-border/20 bg-muted/20">
-                <span className="text-xs font-semibold uppercase text-muted-foreground flex items-center gap-2">
-                  <Code className="h-3.5 w-3.5" /> CSS
-                </span>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => copyToClipboard(generatedCode.css, "css")}
-                  className="h-6 px-2 text-xs hover:bg-background border border-transparent hover:border-border"
+          <div className="flex flex-col gap-3 flex-none">
+            {/* Mode Switcher */}
+            <div className="flex justify-center">
+              <div className="flex bg-muted rounded-lg p-1">
+                <button
+                  onClick={() => setOutputMode("standard")}
+                  className={`flex items-center gap-2 px-4 py-1.5 text-xs font-medium rounded-md transition-all ${outputMode === "standard" ? "bg-background shadow-sm text-foreground" : "text-muted-foreground hover:text-foreground"}`}
                 >
-                  {copiedCss ? (
-                    <Check className="h-3 w-3 mr-1 text-emerald-500" />
-                  ) : (
-                    <Copy className="h-3 w-3 mr-1" />
-                  )}
-                  {copiedCss ? "Copied" : "Copy"}
-                </Button>
-              </div>
-              <MonacoEditor
-                value={generatedCode.css}
-                language="css"
-                readOnly
-                className="border-none"
-                lineNumbers="off"
-              />
-            </Card>
-            <Card className="h-80 md:h-96 flex flex-col p-0 border-border/60 shadow-sm bg-card overflow-hidden">
-              <div className="flex items-center justify-between px-3 py-2 border-b border-border/20 bg-muted/20">
-                <span className="text-xs font-semibold uppercase text-muted-foreground flex items-center gap-2">
-                  <Code className="h-3.5 w-3.5" /> HTML
-                </span>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => copyToClipboard(generatedCode.html, "html")}
-                  className="h-6 px-2 text-xs hover:bg-background border border-transparent hover:border-border"
+                  <Code className="h-3.5 w-3.5" /> CSS / HTML
+                </button>
+                <button
+                  onClick={() => setOutputMode("tailwind")}
+                  className={`flex items-center gap-2 px-4 py-1.5 text-xs font-medium rounded-md transition-all ${outputMode === "tailwind" ? "bg-background shadow-sm text-foreground" : "text-muted-foreground hover:text-foreground"}`}
                 >
-                  {copiedHtml ? (
-                    <Check className="h-3 w-3 mr-1 text-emerald-500" />
-                  ) : (
-                    <Copy className="h-3 w-3 mr-1" />
-                  )}
-                  {copiedHtml ? "Copied" : "Copy"}
-                </Button>
+                  <Wind className="h-3.5 w-3.5" /> Tailwind
+                </button>
               </div>
-              <MonacoEditor
-                value={generatedCode.html}
-                language="html"
-                readOnly
-                className="border-none"
-                lineNumbers="off"
-              />
-            </Card>
+            </div>
+
+            {outputMode === "standard" ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <Card className="h-80 md:h-96 flex flex-col p-0 border-border/60 shadow-sm bg-card overflow-hidden">
+                  <div className="flex items-center justify-between px-3 py-2 border-b border-border/20 bg-muted/20">
+                    <span className="text-xs font-semibold uppercase text-muted-foreground flex items-center gap-2">
+                      <Code className="h-3.5 w-3.5" /> CSS
+                    </span>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => copyToClipboard(generatedCode.css, "css")}
+                      className="h-6 px-2 text-xs hover:bg-background border border-transparent hover:border-border"
+                    >
+                      {copiedCss ? (
+                        <Check className="h-3 w-3 mr-1 text-emerald-500" />
+                      ) : (
+                        <Copy className="h-3 w-3 mr-1" />
+                      )}
+                      {copiedCss ? "Copied" : "Copy"}
+                    </Button>
+                  </div>
+                  <MonacoEditor
+                    value={generatedCode.css}
+                    language="css"
+                    readOnly
+                    className="border-none"
+                    lineNumbers="off"
+                  />
+                </Card>
+                <Card className="h-80 md:h-96 flex flex-col p-0 border-border/60 shadow-sm bg-card overflow-hidden">
+                  <div className="flex items-center justify-between px-3 py-2 border-b border-border/20 bg-muted/20">
+                    <span className="text-xs font-semibold uppercase text-muted-foreground flex items-center gap-2">
+                      <Code className="h-3.5 w-3.5" /> HTML
+                    </span>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() =>
+                        copyToClipboard(generatedCode.html, "html")
+                      }
+                      className="h-6 px-2 text-xs hover:bg-background border border-transparent hover:border-border"
+                    >
+                      {copiedHtml ? (
+                        <Check className="h-3 w-3 mr-1 text-emerald-500" />
+                      ) : (
+                        <Copy className="h-3 w-3 mr-1" />
+                      )}
+                      {copiedHtml ? "Copied" : "Copy"}
+                    </Button>
+                  </div>
+                  <MonacoEditor
+                    value={generatedCode.html}
+                    language="html"
+                    readOnly
+                    className="border-none"
+                    lineNumbers="off"
+                  />
+                </Card>
+              </div>
+            ) : (
+              <Card className="h-80 md:h-96 flex flex-col p-0 border-border/60 shadow-sm bg-card overflow-hidden animate-in fade-in slide-in-from-bottom-2 duration-300">
+                <div className="flex items-center justify-between px-3 py-2 border-b border-border/20 bg-muted/20">
+                  <span className="text-xs font-semibold uppercase text-muted-foreground flex items-center gap-2">
+                    <Wind className="h-3.5 w-3.5" /> Tailwind CSS HTML
+                  </span>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() =>
+                      copyToClipboard(generatedCode.tailwind, "tailwind")
+                    }
+                    className="h-6 px-2 text-xs hover:bg-background border border-transparent hover:border-border"
+                  >
+                    {copiedTailwind ? (
+                      <Check className="h-3 w-3 mr-1 text-emerald-500" />
+                    ) : (
+                      <Copy className="h-3 w-3 mr-1" />
+                    )}
+                    {copiedTailwind ? "Copied" : "Copy"}
+                  </Button>
+                </div>
+                <MonacoEditor
+                  value={generatedCode.tailwind}
+                  language="html"
+                  readOnly
+                  className="border-none"
+                  lineNumbers="off"
+                />
+              </Card>
+            )}
           </div>
         </div>
       </div>

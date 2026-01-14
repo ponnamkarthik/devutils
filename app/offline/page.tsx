@@ -2,7 +2,7 @@ import Link from "next/link";
 import { RetryButton } from "./RetryButton";
 
 export const metadata = {
-  title: "Offline",
+  title: "Offline Mode | DevUtils – Free Online Developer Tools",
   description:
     "You appear to be offline. DevUtils works best with a network connection, but many tools still work once cached.",
 };

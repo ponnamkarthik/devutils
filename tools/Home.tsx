@@ -354,12 +354,12 @@ export const Home: React.FC = () => {
   return (
     <div className="space-y-8 w-full">
       <div className="space-y-3">
-        <h2 className="text-3xl font-bold tracking-tight text-foreground">
-          Welcome to DevUtils
-        </h2>
+        <h1 className="text-3xl font-bold tracking-tight text-foreground">
+          DevUtils Developer Tools &amp; Utilities
+        </h1>
         <p className="text-muted-foreground text-lg max-w-2xl">
-          Essential developer tools. 100% Client-side. Offline ready. No
-          tracking.
+          Essential developer tools. 100% client-side. Offline ready. No
+          tracking. Welcome to DevUtils.
         </p>
       </div>
 

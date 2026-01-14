@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Button, CodeEditor, Card } from "../components/UI";
-import { Upload, X, Copy, Check } from "lucide-react";
+import { Binary, Upload, X, Copy, Check } from "lucide-react";
 
 interface Base64ToolProps {
   mode?: "encode" | "decode";
@@ -86,6 +86,22 @@ export const Base64Tool: React.FC<Base64ToolProps> = ({ mode = "encode" }) => {
 
   return (
     <div className="flex flex-col gap-4 h-[calc(100vh-10rem)] min-h-[600px]">
+      <div className="flex items-center justify-between pb-2 border-b border-border/40 flex-none">
+        <div className="flex items-center gap-2">
+          <div className="p-2 bg-emerald-500/10 text-emerald-500 rounded-lg">
+            <Binary className="h-5 w-5" />
+          </div>
+          <div>
+            <h1 className="text-2xl font-bold tracking-tight text-foreground">
+              {mode === "encode" ? "Base64 Encoder" : "Base64 Decoder"}
+            </h1>
+            <p className="text-xs text-muted-foreground">
+              Encode and decode text or files in your browser.
+            </p>
+          </div>
+        </div>
+      </div>
+
       <div className="flex items-center justify-between bg-card p-3 rounded-lg border border-border shadow-sm">
         <div className="flex items-center gap-4">
           <div className="flex bg-muted rounded-lg p-1">

@@ -397,6 +397,8 @@ export const CronTool: React.FC = () => {
     );
   };
 
+  // --- UI ---
+
   const setPreset = (expr: string) => {
     handleInputChange(expr);
   };
@@ -432,6 +434,23 @@ export const CronTool: React.FC = () => {
 
   return (
     <div className="flex flex-col gap-6 w-full pb-10">
+      {/* Header */}
+      <div className="flex items-center justify-between pb-2 border-b border-border/40 flex-none">
+        <div className="flex items-center gap-2">
+          <div className="p-2 bg-yellow-500/10 text-yellow-500 rounded-lg">
+            <Clock className="h-5 w-5" />
+          </div>
+          <div>
+            <h1 className="text-2xl font-bold tracking-tight text-foreground">
+              Cron Expression Generator
+            </h1>
+            <p className="text-xs text-muted-foreground">
+              Build cron schedules and understand them in plain English.
+            </p>
+          </div>
+        </div>
+      </div>
+
       {/* Top Section: Visualization & Builder Bar */}
       <div className="flex flex-col gap-6">
         {/* Hero Description */}

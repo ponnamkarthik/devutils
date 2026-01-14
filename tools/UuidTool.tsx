@@ -2,7 +2,14 @@
 
 import React, { useState, useEffect } from "react";
 import { Button, Input } from "../components/UI";
-import { Copy, RefreshCw, Check, Trash2, ChevronDown } from "lucide-react";
+import {
+  Fingerprint,
+  Copy,
+  RefreshCw,
+  Check,
+  Trash2,
+  ChevronDown,
+} from "lucide-react";
 import { v1, v4, v6, v7, NIL } from "uuid";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
@@ -76,6 +83,23 @@ export const UuidTool: React.FC = () => {
 
   return (
     <div className="flex flex-col gap-6 h-[calc(100vh-10rem)] min-h-[500px]">
+      {/* Header */}
+      <div className="flex items-center justify-between pb-2 border-b border-border/40 flex-none">
+        <div className="flex items-center gap-2">
+          <div className="p-2 bg-pink-500/10 text-pink-500 rounded-lg">
+            <Fingerprint className="h-5 w-5" />
+          </div>
+          <div>
+            <h1 className="text-2xl font-bold tracking-tight text-foreground">
+              UUID Generator
+            </h1>
+            <p className="text-xs text-muted-foreground">
+              Generate RFC-compliant UUIDs locally in your browser.
+            </p>
+          </div>
+        </div>
+      </div>
+
       {/* Controls */}
       <div className="bg-card p-4 rounded-lg border border-border shadow-sm flex flex-col md:flex-row gap-4 items-end md:items-center justify-between">
         <div className="flex flex-1 gap-4 items-center w-full md:w-auto">
