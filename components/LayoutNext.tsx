@@ -63,6 +63,12 @@ const TOOL_GROUPS = [
       { name: "Code Minifier", path: "/code/minifier", icon: FileCode },
       { name: "API Docs Generator", path: "/api-docs", icon: Book },
       { name: "HTTP Request Builder", path: "/http-builder", icon: Send },
+      {
+        name: "Web Editor",
+        path: "https://editor.karthikponnam.dev/",
+        icon: FileText,
+        isExternal: true,
+      },
     ],
   },
   {
@@ -103,6 +109,7 @@ const TOOL_GROUPS = [
 ];
 
 const isPathActive = (itemPath: string, currentPath: string) => {
+  if (itemPath.startsWith("http")) return false;
   if (itemPath === "/") return currentPath === "/";
   return currentPath.startsWith(itemPath);
 };
@@ -159,7 +166,11 @@ const CommandPalette: React.FC<{ isOpen: boolean; onClose: () => void }> = ({
         e.preventDefault();
         const tool = filteredTools[selectedIndex];
         if (!tool) return;
-        router.push(tool.path);
+        if ((tool as any).isExternal || tool.path.startsWith("http")) {
+          window.open(tool.path, "_blank", "noreferrer");
+        } else {
+          router.push(tool.path);
+        }
         onClose();
         return;
       }
@@ -224,7 +235,14 @@ const CommandPalette: React.FC<{ isOpen: boolean; onClose: () => void }> = ({
                 <button
                   key={tool.path}
                   onClick={() => {
-                    router.push(tool.path);
+                    if (
+                      (tool as any).isExternal ||
+                      tool.path.startsWith("http")
+                    ) {
+                      window.open(tool.path, "_blank", "noreferrer");
+                    } else {
+                      router.push(tool.path);
+                    }
                     onClose();
                   }}
                   onMouseEnter={() => setSelectedIndex(idx)}
@@ -247,6 +265,10 @@ const CommandPalette: React.FC<{ isOpen: boolean; onClose: () => void }> = ({
                       {tool.group}
                     </div>
                   </div>
+                  {((tool as any).isExternal ||
+                    tool.path.startsWith("http")) && (
+                    <ExternalLink className="h-3.5 w-3.5 opacity-40" />
+                  )}
                   {idx === selectedIndex && (
                     <ArrowRightLeft className="h-3 w-3 opacity-50" />
                   )}
@@ -271,7 +293,7 @@ const CommandPalette: React.FC<{ isOpen: boolean; onClose: () => void }> = ({
 
 interface DropdownGroupProps {
   label: string;
-  items: Array<{ name: string; path: string; icon: any }>;
+  items: Array<{ name: string; path: string; icon: any; isExternal?: boolean }>;
 }
 
 const DropdownGroup: React.FC<DropdownGroupProps> = ({ label, items }) => {
@@ -318,6 +340,24 @@ const DropdownGroup: React.FC<DropdownGroupProps> = ({ label, items }) => {
           {items.map((item) => {
             const Icon = item.icon;
             const active = isPathActive(item.path, currentPath);
+
+            if (item.isExternal || item.path.startsWith("http")) {
+              return (
+                <a
+                  key={item.path}
+                  href={item.path}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center gap-3 px-4 py-2.5 text-sm transition-colors text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                >
+                  <Icon className="h-4 w-4" />
+                  {item.name}
+                  <ExternalLink className="h-3 w-3 opacity-50 ml-auto" />
+                </a>
+              );
+            }
+
             return (
               <Link
                 key={item.path}
@@ -513,6 +553,27 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({
                     {group.items.map((item) => {
                       const Icon = item.icon;
                       const active = isPathActive(item.path, currentPath);
+
+                      if (
+                        (item as any).isExternal ||
+                        item.path.startsWith("http")
+                      ) {
+                        return (
+                          <a
+                            key={item.path}
+                            href={item.path}
+                            target="_blank"
+                            rel="noreferrer"
+                            onClick={() => setSidebarOpen(false)}
+                            className="flex items-center gap-3 px-3 py-2 text-sm rounded-md transition-colors text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                          >
+                            <Icon className="h-4 w-4" />
+                            {item.name}
+                            <ExternalLink className="h-3 w-3 opacity-50 ml-auto" />
+                          </a>
+                        );
+                      }
+
                       return (
                         <Link
                           key={item.path}

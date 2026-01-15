@@ -277,6 +277,16 @@ const TOOLS = [
     bgColor: "bg-slate-600/10",
   },
   {
+    title: "Web Editor",
+    description:
+      "A fast, local-first Markdown editor with file tree, command palette, smart paste, and scroll-synced preview.",
+    icon: FileText,
+    path: "https://editor.karthikponnam.dev/",
+    color: "text-slate-700",
+    bgColor: "bg-slate-700/10",
+    isExternal: true,
+  },
+  {
     title: "QR Code Generator",
     description:
       "Create customizable QR codes for URLs, text, and Wi-Fi credentials instantly.",
