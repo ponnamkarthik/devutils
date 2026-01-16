@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState, useEffect, useCallback } from "react";
-import { Button, Card, Input } from "../components/UI";
+import { Button, Card } from "../components/UI";
 import { MonacoEditor } from "../components/MonacoEditor";
+import { JsonTreeItem } from "../components/JsonTreeView";
 import {
   FileCode,
   Play,
@@ -11,6 +12,7 @@ import {
   Eraser,
   Settings2,
   FileType,
+  ListTree,
 } from "lucide-react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
@@ -570,6 +572,7 @@ export const JsonConverterTool: React.FC = () => {
     '{\n  "id": 1,\n  "username": "DevUtils",\n  "isActive": true,\n  "roles": ["Admin", "User"],\n  "settings": {\n    "theme": "dark",\n    "notifications": true\n  }\n}'
   );
   const [output, setOutput] = useState("");
+  const [parsedData, setParsedData] = useState<any>(null);
   const [language, setLanguage] = useLocalStorage<Language>(
     "devutils-json-convert-lang",
     "typescript"
@@ -580,20 +583,24 @@ export const JsonConverterTool: React.FC = () => {
   );
   const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
+  const [view, setView] = useState<"types" | "tree">("types");
 
   const handleConvert = useCallback(() => {
     try {
       if (!input.trim()) {
         setOutput("");
+        setParsedData(null);
         return;
       }
       const json = JSON.parse(input);
+      setParsedData(json);
       const generator = new SchemaGenerator();
       const code = generator.generate(json, rootName, language);
       setOutput(code);
       setError(null);
     } catch (e: any) {
       setError(e.message || "Invalid JSON");
+      setParsedData(null);
     }
   }, [input, language, rootName]);
 
@@ -725,6 +732,7 @@ export const JsonConverterTool: React.FC = () => {
               setInput("");
               setOutput("");
               setError(null);
+              setParsedData(null);
             }}
             variant="destructive"
             size="sm"
@@ -747,29 +755,77 @@ export const JsonConverterTool: React.FC = () => {
         </Card>
 
         <Card className="flex flex-col p-0 h-full border-border/60 shadow-sm bg-card relative overflow-hidden">
-          <MonacoEditor
-            label={`${language === "csharp" ? "C#" : capitalize(language)} Output`}
-            value={output}
-            readOnly
-            language={getMonacoLanguage(language)}
-            className={`border-none ${error ? "opacity-50" : ""}`}
-            actions={
-              <Button
-                onClick={copyToClipboard}
-                variant="ghost"
-                size="sm"
-                disabled={!output}
-                className="h-6 px-2 text-xs hover:bg-background border border-transparent hover:border-border"
-              >
-                {copied ? (
-                  <Check className="h-3 w-3 mr-1 text-emerald-500" />
-                ) : (
-                  <Copy className="h-3 w-3 mr-1" />
+          <div className="flex flex-col h-full w-full overflow-hidden">
+            <div className="flex items-center justify-between px-3 py-2 border-b border-border/20 flex-none bg-muted/20">
+              <div className="flex items-center gap-2 text-muted-foreground">
+                <span className="text-xs font-semibold uppercase tracking-wider">
+                  {view === "types"
+                    ? `${language === "csharp" ? "C#" : capitalize(language)} Output`
+                    : "Tree View"}
+                </span>
+                {view === "types" && (
+                  <span className="text-[10px] uppercase text-muted-foreground border border-border px-1.5 py-0.5 rounded">
+                    Read-only
+                  </span>
                 )}
-                {copied ? "Copied" : "Copy"}
-              </Button>
-            }
-          />
+              </div>
+
+              <div className="flex items-center gap-2">
+                <div className="flex bg-muted p-1 rounded-lg">
+                  <button
+                    onClick={() => setView("types")}
+                    className={`flex items-center gap-2 px-3 py-1 text-xs font-medium rounded-md transition-all ${view === "types" ? "bg-background shadow-sm text-foreground" : "text-muted-foreground hover:text-foreground"}`}
+                  >
+                    <FileCode className="h-3.5 w-3.5" /> Types
+                  </button>
+                  <button
+                    onClick={() => setView("tree")}
+                    className={`flex items-center gap-2 px-3 py-1 text-xs font-medium rounded-md transition-all ${view === "tree" ? "bg-background shadow-sm text-foreground" : "text-muted-foreground hover:text-foreground"}`}
+                  >
+                    <ListTree className="h-3.5 w-3.5" /> Tree
+                  </button>
+                </div>
+
+                {view === "types" && (
+                  <Button
+                    onClick={copyToClipboard}
+                    variant="ghost"
+                    size="sm"
+                    disabled={!output}
+                    className="h-6 px-2 text-xs hover:bg-background border border-transparent hover:border-border"
+                  >
+                    {copied ? (
+                      <Check className="h-3 w-3 mr-1 text-emerald-500" />
+                    ) : (
+                      <Copy className="h-3 w-3 mr-1" />
+                    )}
+                    {copied ? "Copied" : "Copy"}
+                  </Button>
+                )}
+              </div>
+            </div>
+
+            <div className={`flex-1 min-h-0 ${error ? "opacity-50" : ""}`}>
+              {view === "types" ? (
+                <MonacoEditor
+                  value={output}
+                  readOnly
+                  language={getMonacoLanguage(language)}
+                  className="border-none"
+                />
+              ) : (
+                <div className="flex-1 overflow-auto p-4 bg-background">
+                  {parsedData ? (
+                    <JsonTreeItem value={parsedData} isLast={true} />
+                  ) : (
+                    <div className="text-sm text-muted-foreground">
+                      Enter valid JSON to preview the tree.
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          </div>
 
           {error && (
             <div className="absolute bottom-0 inset-x-0 p-3 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 text-sm border-t border-red-200 dark:border-red-800 flex items-start animate-in slide-in-from-bottom-2 z-10">

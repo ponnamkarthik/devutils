@@ -598,7 +598,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({
         </div>
       )}
 
-      <main className="flex-1 container px-4 py-8 mx-auto max-w-screen-2xl">
+      <main className="flex-1 container px-4 pt-4 pb-8 mx-auto max-w-screen-2xl">
         {children}
       </main>
 
