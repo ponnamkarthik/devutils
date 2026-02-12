@@ -1,0 +1,7 @@
+name = "devutils"
+main = ".open-next/worker.js"
+compatibility_date = "2024-12-01"
+
+[assets]
+directory = ".open-next/assets"
+binding = "ASSETS"

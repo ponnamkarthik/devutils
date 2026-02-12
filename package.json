@@ -8,10 +8,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "export": "npm run build && next export"
+    "export": "npm run build && next export",
+    "build:cloudflare": "opennextjs-cloudflare build",
+    "deploy": "opennextjs-cloudflare build && wrangler deploy"
   },
   "dependencies": {
     "@monaco-editor/react": "^4.6.0",
+    "@opennextjs/cloudflare": "^1.16.4",
     "clsx": "^2.1.1",
     "cronstrue": "^2.50.0",
     "culori": "^4.0.2",
@@ -25,8 +28,8 @@
     "prismjs": "^1.29.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^6.30.1",
     "react-qr-code": "^2.0.18",
+    "react-router-dom": "^6.30.1",
     "reactflow": "^11.10.1",
     "smol-toml": "^1.3.1",
     "sql-formatter": "^15.3.1",
